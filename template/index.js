@@ -1,7 +1,6 @@
 module.exports = {
   name: '{{name}}',
   version: '{{version}}',
-  source: 'template',
   {{#metadata}}
   metadata: {},
   {{/metadata}}

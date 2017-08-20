@@ -57,7 +57,6 @@ module.exports = {
     }
   },
   complete: context => {
-    console.log('  →', context.dest)
     console.log('  Good luck~')
   }
 }
