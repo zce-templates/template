@@ -1,6 +1,9 @@
 module.exports = {
   name: '{{name}}',
   version: '{{version}}',
+  {{^eq source 'template'}}
+  source: '{{source}}',
+  {{/eq}}
   {{#metadata}}
   metadata: {},
   {{/metadata}}
@@ -35,7 +38,7 @@ module.exports = {
   {{/prompts}}
   {{#filters}}
   filters: {
-    // TODO: custom helpers
+    // TODO: custom filters
     // eg. '**/*.scss': answers => answers.sass
   },
   {{/filters}}

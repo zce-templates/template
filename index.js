@@ -25,6 +25,11 @@ module.exports = {
       type: 'input',
       message: 'Template version'
     },
+    source: {
+      type: 'input',
+      message: 'Template source directory',
+      default: 'template'
+    },
     metadata: {
       type: 'confirm',
       message: 'Use metadata',
