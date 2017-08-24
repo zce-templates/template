@@ -1,0 +1,11 @@
+{
+  "name": "@zce-templates/template",
+  "version": "0.1.0",
+  "description": "A template for generating templates of zce-cli",
+  "keywords": ["zce", "zce-templates", "template"],
+  "license": "MIT",
+  "author": "zce <w@zce.me> (https://zce.me)",
+  "repository": "zce-templates/template",
+  "dependencies": {},
+  "devDependencies": {}
+}

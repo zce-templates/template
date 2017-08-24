@@ -1,4 +1,7 @@
-# {{name}}
+# @zce-templates/{{name}}
+
+[![Dependency Status][dependency-image]][dependency-url]
+[![devDependency Status][devdependency-image]][devdependency-url]
 
 > {{description}}
 
@@ -15,3 +18,10 @@ $ zce init {{name}} my-project
 ## License
 
 [MIT](LICENSE) &copy; {{author}}
+
+
+
+[dependency-image]: https://img.shields.io/david/zce-templates/{{name}}.svg
+[dependency-url]: https://david-dm.org/zce-templates/{{name}}
+[devdependency-image]: https://img.shields.io/david/dev/zce-templates/{{name}}.svg
+[devdependency-url]: https://david-dm.org/zce-templates/{{name}}?type=dev

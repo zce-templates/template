@@ -1,0 +1,11 @@
+{
+  "name": "@zce-templates/{{name}}",
+  "version": "0.1.0",
+  "description": "{{description}}",
+  "keywords": ["zce", "zce-templates", "{{name}}"],
+  "license": "MIT",
+  "author": "zce <w@zce.me> (https://zce.me)",
+  "repository": "zce-templates/{{name}}",
+  "dependencies": {},
+  "devDependencies": {}
+}

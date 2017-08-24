@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   name: 'template',
   version: '0.1.0',
