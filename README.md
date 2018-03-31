@@ -7,7 +7,7 @@
 
 ## Usage
 
-```sh
+```shell
 # Install the zce-cli globally
 $ yarn global install zce-cli # or npm install -g zce-cli
 
