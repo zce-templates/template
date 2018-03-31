@@ -55,7 +55,7 @@ module.exports = {
     },
     complete: {
       type: 'list',
-      message: 'Use custom plugin',
+      message: 'Complete callback type',
       choices: ['String', 'Callback']
     }
   },
