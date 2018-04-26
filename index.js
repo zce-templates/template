@@ -45,6 +45,7 @@ module.exports = {
         { name: 'Custom filters', value: 'filters' },
         { name: 'Custom helpers', value: 'helpers' },
         { name: 'Custom plugin', value: 'plugin' },
+        { name: 'Custom complete', value: 'complete' },
         { name: 'Additional docs', value: 'docs' },
         { name: 'Automatic test', value: 'test' }
       ]
@@ -52,6 +53,7 @@ module.exports = {
     complete: {
       type: 'list',
       message: 'Complete type',
+      when: answers => answers.features.includes('complete'),
       choices: [
         { name: 'Message', value: 'message' },
         { name: 'Callback', value: 'callback' }

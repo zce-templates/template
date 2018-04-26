@@ -42,7 +42,7 @@ test.serial('maximal', async t => {
     author: 'zce <w@zce.me> (https://zce.me/)',
     organization: 'zce-mock',
     source: 'tmpl',
-    features: [ 'metadata', 'prompts', 'filters', 'helpers', 'plugin', 'docs', 'test' ],
+    features: [ 'metadata', 'prompts', 'filters', 'helpers', 'plugin', 'docs', 'test', 'complete' ],
     complete: 'callback'
   })
 
