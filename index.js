@@ -65,7 +65,7 @@ module.exports = {
   },
   complete: context => {
     const { dest } = context
-    const reldest = path.relative(process.cwd(), dest)
+    const reldest = path.relative(process.cwd(), dest) || './'
     exec('git init', { cwd: dest }, () => console.log('✨  new template →', reldest, '✨\n\n'))
   }
 }
