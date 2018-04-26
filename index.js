@@ -1,3 +1,4 @@
+const path = require('path')
 const { exec } = require('child_process')
 
 module.exports = {
@@ -64,8 +65,7 @@ module.exports = {
   },
   complete: context => {
     const { dest } = context
-    exec('git init', { cwd: dest }, () => {
-      console.log('👏  template init into ' + dest)
-    })
+    const reldest = path.relative(process.cwd(), dest)
+    exec('git init', { cwd: dest }, () => console.log('✨  new template →', reldest, '✨\n\n'))
   }
 }
