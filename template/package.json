@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<%= organization %>/<%= name %>.git"
-  }<% if (features.test) { %>,
+  }<% if (features.includes('test')) { %>,
   "scripts": {
     "test": "standard --fix && ava --verbose"
   },

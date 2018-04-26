@@ -59,9 +59,9 @@ module.exports = {
     }
   },
   filters: {
-    'docs/**': answers => answers.features.docs,
-    'test/**': answers => answers.features.test,
-    '.travis.yml': answers => answers.features.test
+    'docs/**': answers => answers.features.includes('docs'),
+    'test/**': answers => answers.features.includes('test'),
+    '.travis.yml': answers => answers.features.includes('test')
   },
   complete: context => {
     const { dest } = context

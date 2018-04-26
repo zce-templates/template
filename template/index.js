@@ -1,11 +1,11 @@
 module.exports = {
   name: '<%= name %>',
   version: '<%= version %>'<% if (source !== 'template') { %>,
-  source: '<%= source %>'<% } if (features.metadata) { %>,
+  source: '<%= source %>'<% } if (features.includes('metadata')) { %>,
   metadata: {
     // TODO: predefined template metadata
     // e.g. year: new Date().getFullYear()
-  }<% } if (features.prompts) { %>,
+  }<% } if (features.includes('prompts')) { %>,
   prompts: {
     name: {
       type: 'input',
@@ -32,15 +32,15 @@ module.exports = {
       type: 'input',
       message: 'Project repository'
     }
-  }<% } if (features.filters) { %>,
+  }<% } if (features.includes('filters')) { %>,
   filters: {
     // TODO: custom filters
     // e.g. '**/*.scss': answers => answers.sass
-  }<% } if (features.helpers) { %>,
+  }<% } if (features.includes('helpers')) { %>,
   helpers: {
     // TODO: custom helpers
     // e.g. uppercase: str => str.toUpperCase()
-  }<% } if (features.plugin) { %>,
+  }<% } if (features.includes('plugin')) { %>,
   plugin: (files, app, next) => {
     // app.metadata() => answers
     // TODO: before filter

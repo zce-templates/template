@@ -12,16 +12,16 @@ test.before(async t => {
 })
 
 test.after(async t => {
-  const cwd = process.cwd()
-  process.chdir(__dirname)
-  await util.rimraf(cwd)
+  // const cwd = process.cwd()
+  // process.chdir(__dirname)
+  // await util.rimraf(cwd)
 })
 
 test.serial('minimal', async t => {
   mockPrompt({
     name: 'minimal-template',
     version: '0.1.0',
-    features: {}
+    features: []
   })
 
   await generator.init('../../', 'minimal-template', { force: true, save: false })
@@ -42,7 +42,7 @@ test.serial('maximal', async t => {
     author: 'zce <w@zce.me> (https://zce.me/)',
     organization: 'zce-mock',
     source: 'tmpl',
-    features: { metadata: true, prompts: true, filters: true, helpers: true, plugin: true, docs: true, test: true },
+    features: [ 'metadata', 'prompts', 'filters', 'helpers', 'plugin', 'docs', 'test' ],
     complete: 'callback'
   })
 

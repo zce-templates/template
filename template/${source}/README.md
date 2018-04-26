@@ -1,4 +1,4 @@
-# <%= "\<%= name %\>" %><% if (features.prompts) { %>
+# <%= "\<%= name %\>" %><% if (features.includes('prompts')) { %>
 
 > <%= "\<%= description %\>" %>
 
