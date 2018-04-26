@@ -4341,9 +4341,9 @@ yauzl@^2.4.2:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.0.1"
 
-zce-cli@^0.2.0-alpha.5:
-  version "0.2.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/zce-cli/-/zce-cli-0.2.0-alpha.5.tgz#8a2b776ddf3618fbdbfabb60036676db463b1184"
+zce-cli@^0.2.0-alpha.6:
+  version "0.2.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/zce-cli/-/zce-cli-0.2.0-alpha.6.tgz#1e7fa5110a34d67d34710e3de25549817fa4234a"
   dependencies:
     boxen "^1.3.0"
     chalk "^2.4.0"
