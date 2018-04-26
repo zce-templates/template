@@ -12,9 +12,9 @@ test.before(async t => {
 })
 
 test.after(async t => {
-  // const cwd = process.cwd()
-  // process.chdir(__dirname)
-  // await util.rimraf(cwd)
+  const cwd = process.cwd()
+  process.chdir(__dirname)
+  await util.rimraf(cwd)
 })
 
 test.serial('minimal', async t => {
