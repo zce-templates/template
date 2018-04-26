@@ -1,11 +1,41 @@
 {
-  "name": "@zce-templates/{{name}}",
-  "version": "0.1.0",
-  "description": "{{description}}",
-  "keywords": ["zce", "zce-templates", "{{name}}"],
+  "name": "@<%= organization %>/<%= name %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "keywords": [
+    "<%= name %>",
+    "<%= organization %>",
+    "zce-cli",
+    "zce"
+  ],
+  "homepage": "https://github.com/<%= organization %>/<%= name %>#readme",
+  "bugs": {
+    "url": "https://github.com/<%= organization %>/<%= name %>/issues"
+  },
   "license": "MIT",
-  "author": "zce <w@zce.me> (https://zce.me)",
-  "repository": "zce-templates/{{name}}",
-  "dependencies": {},
-  "devDependencies": {}
+  "author": "<%= author %>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= organization %>/<%= name %>.git"
+  }<% if (features.test) { %>,
+  "scripts": {
+    "test": "standard --fix && ava --verbose"
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.4",
+    "mock-prompt": "^0.1.2",
+    "standard": "^11.0.1",
+    "zce-cli": "^0.2.0-alpha.5"
+  },
+  "ava": {
+    "files": [
+      "test/*.test.js"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "<%= source %>"
+    ]
+  }<% } %>
 }

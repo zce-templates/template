@@ -1,14 +1,20 @@
+const { exec } = require('child_process')
+
 module.exports = {
   name: 'template',
-  version: '0.1.0',
+  version: '0.2.0',
   source: 'template',
   metadata: {
-    year: new Date().getYear() + 1900
+    year: new Date().getFullYear()
   },
   prompts: {
     name: {
       type: 'input',
       message: 'Template name'
+    },
+    version: {
+      type: 'input',
+      message: 'Template version'
     },
     description: {
       type: 'input',
@@ -19,47 +25,47 @@ module.exports = {
       type: 'input',
       message: 'Template author'
     },
-    version: {
+    organization: {
       type: 'input',
-      message: 'Template version'
+      message: 'Template organization name',
+      default: 'zce-templates'
     },
     source: {
       type: 'input',
-      message: 'Template source directory',
+      message: 'Template source directory name',
       default: 'template'
     },
-    metadata: {
-      type: 'confirm',
-      message: 'Use metadata',
-      default: false
-    },
-    prompts: {
-      type: 'confirm',
-      message: 'Use custom prompts',
-      default: true
-    },
-    filters: {
-      type: 'confirm',
-      message: 'Use custom filters',
-      default: false
-    },
-    helpers: {
-      type: 'confirm',
-      message: 'Use custom helpers',
-      default: false
-    },
-    plugin: {
-      type: 'confirm',
-      message: 'Use custom plugin',
-      default: false
+    features: {
+      type: 'checkbox',
+      message: 'Choose the features you need',
+      choices: [
+        { name: 'Use metadata', value: 'metadata' },
+        { name: 'Custom prompts', value: 'prompts', checked: true },
+        { name: 'Custom filters', value: 'filters' },
+        { name: 'Custom helpers', value: 'helpers' },
+        { name: 'Custom plugin', value: 'plugin' },
+        { name: 'Additional docs', value: 'docs' },
+        { name: 'Automatic test', value: 'test' }
+      ]
     },
     complete: {
       type: 'list',
-      message: 'Complete callback type',
-      choices: ['String', 'Callback']
+      message: 'Complete type',
+      choices: [
+        { name: 'Message', value: 'message' },
+        { name: 'Callback', value: 'callback' }
+      ]
     }
   },
+  filters: {
+    'docs/**': answers => answers.features.docs,
+    'test/**': answers => answers.features.test,
+    '.travis.yml': answers => answers.features.test
+  },
   complete: context => {
-    console.log('  Good luck~')
+    const { dest } = context
+    exec('git init', { cwd: dest }, () => {
+      console.log('👏  template init into ' + dest)
+    })
   }
 }

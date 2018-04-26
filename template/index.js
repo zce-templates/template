@@ -1,13 +1,11 @@
 module.exports = {
-  name: '{{name}}',
-  version: '{{version}}',
-  {{^eq source 'template'}}
-  source: '{{source}}',
-  {{/eq}}
-  {{#metadata}}
-  metadata: {},
-  {{/metadata}}
-  {{#prompts}}
+  name: '<%= name %>',
+  version: '<%= version %>'<% if (source !== 'template') { %>,
+  source: '<%= source %>'<% } if (features.metadata) { %>,
+  metadata: {
+    // TODO: predefined template metadata
+    // e.g. year: new Date().getFullYear()
+  }<% } if (features.prompts) { %>,
   prompts: {
     name: {
       type: 'input',
@@ -16,7 +14,7 @@ module.exports = {
     description: {
       type: 'input',
       message: 'Project description',
-      default: 'Awesome {{name}} project'
+      default: 'Awesome <%= name %> project'
     },
     author: {
       type: 'input',
@@ -34,35 +32,26 @@ module.exports = {
       type: 'input',
       message: 'Project repository'
     }
-  },
-  {{/prompts}}
-  {{#filters}}
+  }<% } if (features.filters) { %>,
   filters: {
     // TODO: custom filters
-    // eg. '**/*.scss': answers => answers.sass
-  },
-  {{/filters}}
-  {{#helpers}}
+    // e.g. '**/*.scss': answers => answers.sass
+  }<% } if (features.helpers) { %>,
   helpers: {
     // TODO: custom helpers
-    // eg. uppercase: str => str.toUpperCase()
-  },
-  {{/helpers}}
-  {{#plugin}}
+    // e.g. uppercase: str => str.toUpperCase()
+  }<% } if (features.plugin) { %>,
   plugin: (files, app, next) => {
+    // answers
+    const metadata = app.metadata()
     // TODO: before filter
     next()
-    // TODO: after render
-  },
-  {{/plugin}}
-  {{#eq complete 'Callback'}}
+    // TODO: after template render
+  }<% } if (complete === 'callback') { %>,
   complete: context => {
-    // TODO: complete callback
+    // TODO: generate complete callback
     console.log('  Good luck~ :-D')
-  }
-  {{/eq}}
-  {{#eq complete 'String'}}
-  // TODO: complete message
-  complete: '  \{{answers.name}} => \{{dest}}, Good luck~ :-D'
-  {{/eq}}
+  }<% } else if (complete === 'message') { %>,
+  // TODO: generate complete message
+  complete: '  <%= "${ answers.name }" %> => <%= "${ dest }" %>, Good luck~ :-D'<% } %>
 }

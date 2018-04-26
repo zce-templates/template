@@ -1,11 +1,45 @@
 {
   "name": "@zce-templates/template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A template for generating templates of zce-cli",
-  "keywords": ["zce", "zce-templates", "template"],
+  "keywords": [
+    "template",
+    "zce-templates",
+    "zce-cli",
+    "zce"
+  ],
+  "homepage": "https://github.com/zce-templates/template#readme",
+  "bugs": {
+    "url": "https://github.com/zce-templates/template/issues"
+  },
   "license": "MIT",
   "author": "zce <w@zce.me> (https://zce.me)",
-  "repository": "zce-templates/template",
-  "dependencies": {},
-  "devDependencies": {}
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zce-templates/template.git"
+  },
+  "scripts": {
+    "test": "standard --fix && ava --verbose"
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.4",
+    "mock-prompt": "^0.1.2",
+    "standard": "^11.0.1",
+    "zce-cli": "^0.2.0-alpha.5"
+  },
+  "ava": {
+    "files": [
+      "test/*.test.js"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "template"
+    ]
+  }
 }

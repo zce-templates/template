@@ -1,4 +1,4 @@
-# Writing your own template
+# How to create a new template
 
 In reading this section, you'll learn how to create and distribute your own template.
 
@@ -9,8 +9,8 @@ In reading this section, you'll learn how to create and distribute your own temp
     ├── template ···································· Template source files directory (Required)
     │   ├── assets ·································· Any directory (Recurse all subdirectories)
     │   │   ├── logo.png ···························· Any file (Auto skip binary file)
-    │   │   └── style.css ··························· Any file (Auto render mustache)
-    │   └── index.html ······························ Any file (Auto render mustache)
+    │   │   └── style.css ··························· Any file (Auto render interpolate content)
+    │   └── ${name}.html ···························· Any file with interpolate (Auto rename by answers)
     ├── index.js ···································· Entry point (Optional, Configuration file)
     └── README.md ··································· README (Optional)
 ```
@@ -33,28 +33,26 @@ It must export an object:
 module.exports = {}
 ```
 
-### Options
-
 Config file can contain the following fields:
 
-#### name
+### name
 
 - Type: `string`
 - Details: Name of template.
 
-#### version
+### version
 
 - Type: `string`
 - Details: Version of template.
 
-#### source
+### source
 
 - Type: `string`
 - Default: 'template'
 - Details: Template source files directory name.
-- Example: [custom-source](../test/mock/source)
+- Example: [custom-source](../test/mock/templates/source)
 
-#### metadata
+### metadata
 
 - Type: `string`
 - Details: The metadata you can use in the template.
@@ -67,16 +65,20 @@ Config file can contain the following fields:
   }
   ```
   Upon definition, they can be used as follows:
-  ```hbs
-  {{title}}
+  ```ejs
+  <%= title %>
+  // => 'hello zce-cli'
+
+  // or es2015 template literal delimiter
+  ${ title }
   // => 'hello zce-cli'
   ```
 
-#### prompts
+### prompts
 
 - Type: `Object`
 - Details: Used to collect user input in CLI.
-- Example: [custom-prompts](../test/mock/prompts)
+- Example: [custom-prompts](../test/mock/templates/prompts)
 - Usage:
   ```js
   module.exports = {
@@ -92,35 +94,29 @@ Config file can contain the following fields:
   }
   ```
 
-#### complete
+### complete
 
 - Type: `string` or `Function`
 - Details: Generate completed callback. if got a string, print it to the console.
-- Example: [custom-complete](../test/mock/complete)
+- Example: [custom-complete](../test/mock/templates/complete)
 - Usage:
   ```js
   module.exports = {
     complete: context => {
-      console.log('  To get started:')
-      console.log()
-      context.inPlace || console.log(`    $ cd ${require('path').relative(process.cwd(), context.dest)}`)
-      console.log('    $ npm install')
-      console.log('    $ npm run dev')
-      console.log()
       console.log('  Good luck~')
     }
   }
   // or
   module.exports = {
-    complete: '{{answers.name}}\n{{src}} → {{dest}}'
+    complete: '${answers.name}\n${src} → ${dest}'
   }
   ```
 
-#### filters
+### filters
 
 - Type: `Object`
 - Details: Used to conditional filter files to output.
-- Example: [custom-filters](../test/mock/filters)
+- Example: [custom-filters](../test/mock/templates/filters)
 - Usage:
   ```js
   module.exports = {
@@ -134,11 +130,11 @@ Config file can contain the following fields:
   }
   ```
 
-#### helpers
+### helpers
 
 - Type: `Object`
 - Details: Used to custom handlebars helpers.
-- Example: [custom-helpers](../test/mock/helpers)
+- Example: [custom-helpers](../test/mock/templates/helpers)
 - Usage:
   ```js
   module.exports = {
@@ -148,20 +144,21 @@ Config file can contain the following fields:
   }
   ```
   Upon registration, they can be used as follows:
-  ```hbs
-  {{uppercase 'zce'}}
+  ```ejs
+  <%= uppercase('zce') %>
   // => 'ZCE'
   ```
 
-#### plugin
+### plugin
 
 - Type: `Object`
 - Details: Used to add custom metalsmith middleware.
-- Example: [custom-plugin](../test/mock/plugin)
+- Example: [custom-plugin](../test/mock/templates/plugin)
 - Usage:
   ```js
   module.exports = {
     plugin: (files, app, next) => {
+      const metadata = app.metadata()
       console.log('before filter')
       next()
       console.log('after render')

@@ -1,7 +1,9 @@
 # @zce-templates/template
 
+[![Build Status][travis-image]][travis-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![devDependency Status][devdependency-image]][devdependency-url]
+[![Code Style][style-image]][style-url]
 
 > A template for generating templates of [zce-cli](https://github.com/zce/zce-cli)
 
@@ -17,7 +19,7 @@ $ zce init template my-template
 
 ## Creating your own template
 
-To create and distribute your own template, refer to [docs](docs/creating.md)
+To create and distribute your own template, refer to [docs](docs)
 
 ## License
 
@@ -25,7 +27,11 @@ To create and distribute your own template, refer to [docs](docs/creating.md)
 
 
 
+[travis-image]: https://img.shields.io/travis/zce-templates/template.svg
+[travis-url]: https://travis-ci.org/zce-templates/template
 [dependency-image]: https://img.shields.io/david/zce-templates/template.svg
 [dependency-url]: https://david-dm.org/zce-templates/template
 [devdependency-image]: https://img.shields.io/david/dev/zce-templates/template.svg
 [devdependency-url]: https://david-dm.org/zce-templates/template?type=dev
+[style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[style-url]: http://standardjs.com
