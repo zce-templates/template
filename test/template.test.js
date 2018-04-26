@@ -30,8 +30,10 @@ test.serial('minimal', async t => {
 
   await generator.init('../../', 'minimal-template', { force: true, save: false })
 
-  t.true(await util.exists(path.join(process.cwd(), 'minimal-template/template/README.md')))
   t.true(await util.exists(path.join(process.cwd(), 'minimal-template/.gitignore')))
+
+  const templateContent = await readFile(path.join(process.cwd(), 'minimal-template/template/README.md'), 'utf8')
+  t.is(templateContent.trim(), '# <%= name %>')
 
   const indexContent = await readFile(path.join(process.cwd(), 'minimal-template/index.js'), 'utf8')
   t.is(indexContent.trim().length, 67)
@@ -65,6 +67,9 @@ test.serial('maximal', async t => {
   t.true(await util.exists(path.join(process.cwd(), 'maximal-template/test/maximal-template.test.js')))
   t.true(await util.exists(path.join(process.cwd(), 'maximal-template/.gitignore')))
   t.true(await util.exists(path.join(process.cwd(), 'maximal-template/.travis.yml')))
+
+  const templateContent = await readFile(path.join(process.cwd(), 'maximal-template/tmpl/README.md'), 'utf8')
+  t.is(templateContent.trim(), '# <%= name %>\n\n> <%= description %>\n\n<!--\n- author: <%= author %>\n- version: <%= version %>\n- license: <%= license %>\n- repository: <%= repository %>\n -->')
 
   const indexContent = await readFile(path.join(process.cwd(), 'maximal-template/index.js'), 'utf8')
   t.is(indexContent.trim().length, 1177)
