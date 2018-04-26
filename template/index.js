@@ -42,8 +42,7 @@ module.exports = {
     // e.g. uppercase: str => str.toUpperCase()
   }<% } if (features.plugin) { %>,
   plugin: (files, app, next) => {
-    // answers
-    const metadata = app.metadata()
+    // app.metadata() => answers
     // TODO: before filter
     next()
     // TODO: after template render

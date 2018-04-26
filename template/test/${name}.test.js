@@ -1,13 +1,9 @@
 import test from 'ava'
 
-import fs from 'fs'
 import path from 'path'
-import { promisify } from 'util'
 import { generator } from 'zce-cli'
 import { util } from 'zce-cli/lib/common'
 import mockPrompt from 'mock-prompt'
-
-const readFile = promisify(fs.readFile)
 
 test.before(async t => {
   const cwd = path.join(__dirname, 'dist')
@@ -27,7 +23,7 @@ test.serial('minimal', async t => {
 
   await generator.init('../../', 'minimal-template', { force: true, save: false })
 
-  t.true(await util.exists(path.join(process.cwd(), 'minimal-template')))
+  t.true(await util.exists(path.join(process.cwd(), 'minimal-template/README.md')))
 
   // TODO: other asserts
 })
