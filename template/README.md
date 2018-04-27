@@ -1,8 +1,8 @@
-# @<%= organization %>/<%= name %>
+# @<%= organization %>/<%= name %><% if (features.includes('test')) { %>
 
 [![Build Status][travis-image]][travis-url]
 [![devDependency Status][devdependency-image]][devdependency-url]
-[![Code Style][style-image]][style-url]
+[![Code Style][style-image]][style-url]<% } %>
 
 > <%= description %>
 
@@ -18,7 +18,7 @@ $ zce init <%= name %> my-project
 
 ## License
 
-[MIT](LICENSE) &copy; <%= author %>
+[MIT](LICENSE) &copy; <%= author %><% if (features.includes('test')) { %>
 
 
 
@@ -27,4 +27,4 @@ $ zce init <%= name %> my-project
 [devdependency-image]: https://img.shields.io/david/dev/<%= organization %>/<%= name %>.svg
 [devdependency-url]: https://david-dm.org/<%= organization %>/<%= name %>?type=dev
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
-[style-url]: http://standardjs.com
+[style-url]: http://standardjs.com<% } %>
