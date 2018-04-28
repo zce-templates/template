@@ -1,6 +1,7 @@
 # @<%= organization %>/<%= name %><% if (features.includes('test')) { %>
 
 [![Build Status][travis-image]][travis-url]
+[![Dependency Status][dependency-image]][dependency-url]
 [![devDependency Status][devdependency-image]][devdependency-url]
 [![Code Style][style-image]][style-url]<% } %>
 
@@ -24,6 +25,8 @@ $ zce init <%= name %> my-project
 
 [travis-image]: https://img.shields.io/travis/<%= organization %>/<%= name %>.svg
 [travis-url]: https://travis-ci.org/<%= organization %>/<%= name %>
+[dependency-image]: https://img.shields.io/david/<%= organization %>/<%= name %>.svg
+[dependency-url]: https://david-dm.org/<%= organization %>/<%= name %>
 [devdependency-image]: https://img.shields.io/david/dev/<%= organization %>/<%= name %>.svg
 [devdependency-url]: https://david-dm.org/<%= organization %>/<%= name %>?type=dev
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
