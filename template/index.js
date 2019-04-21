@@ -11,6 +11,10 @@ module.exports = {
       type: 'input',
       message: 'Project name'
     },
+    version: {
+      type: 'input',
+      message: 'Project version'
+    },
     description: {
       type: 'input',
       message: 'Project description',
@@ -19,10 +23,6 @@ module.exports = {
     author: {
       type: 'input',
       message: 'Project author'
-    },
-    version: {
-      type: 'input',
-      message: 'Project version'
     },
     license: {
       type: 'input',
